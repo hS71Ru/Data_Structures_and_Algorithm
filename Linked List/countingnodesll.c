@@ -69,7 +69,7 @@ int RCount(struct Node *p)
 int main()
 {
 
-    int A[]={3,5,7,9,12,42,63,445};
+    int A[]={3,5,7,9,17,42,63,445};
 
     Create(A,8);
 
