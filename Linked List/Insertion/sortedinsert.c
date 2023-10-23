@@ -36,7 +36,6 @@ void Create(int A[], int n)
 }
 
 //Function to Display Linked List using Iterative Method
-
 void Display(struct Node *p)
 {
     while(p!=NULL){
@@ -49,16 +48,37 @@ void Display(struct Node *p)
 }
 
 
-//Function to Display Linked List using Recursion
 
-void RDisplay(struct Node *p)
+//Function to Insert Node in Linked List
+
+void SortedInsert(struct Node *p, int x)
 {
-    if(p!=NULL)
-    {
-        printf("%d ",p->data);
-        RDisplay(p->next);                   //recursive Function
+    
+    struct Node *t,*q=NULL;
+    t = (struct Node *)malloc(sizeof(struct Node));
+    t->data=x;
+    t->next=NULL;
 
+    if(first==NULL){
+        first=t;
     }
+
+    else{
+
+        while(p && p->data<x){
+            q=p;
+            p=p->next;
+        }
+        if(p==first){
+            t->next=first;
+            first=t;
+        }
+        else{
+            t->next=q->next;
+            q->next=t;
+        }
+    }
+    
 }
 
 
@@ -67,11 +87,17 @@ void RDisplay(struct Node *p)
 int main()
 {
 
-    int A[]={3,5,7,9,12};
+
+
+    int A[]={10,23,35,57,68};
 
     Create(A,5);
 
-    RDisplay(first);
+    SortedInsert(first,4);
+
+    Display(first);
+
+    printf("\n\n");
 
     return 0;
 
